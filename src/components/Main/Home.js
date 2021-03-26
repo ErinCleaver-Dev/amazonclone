@@ -31,7 +31,7 @@ const Body = styled.div`
 const Banner = styled.div`
     background-image: url('https://i.imgur.com/SYHeuYM.jpg');
     min-height: 600px;
-    overflow:hidden
+    overflow: hidden;
     background-position: center;
     background-size: cover;
     mask-image: linear-gradient(to bottom, rgba(0, 0, 1) , rgba(0, 0, 0, 0));
