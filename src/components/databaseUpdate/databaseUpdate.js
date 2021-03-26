@@ -2,17 +2,15 @@ import React from 'react'
 import styled from 'styled-components';
 import { Link } from "react-router-dom";
 
-function Cart() {
+function databaseUpdate() {
     return (
         <Container>
-            <Link to="/databaseUpdate">
-                Update Database
-            </Link>
+            Update Database
         </Container>
     )
 }
 
-export default Cart
+export default databaseUpdate
 
 const Container = styled.div`
     background-image: linear-gradient(to right, #EAEDED , #A4D6D6);
