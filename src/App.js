@@ -4,6 +4,7 @@ import NavBar from './components/NavBar/NavBar';
 import Footer from './components/Footer/Footer';
 import Home from './components/Main/Home';
 import Cart from './components/Cart/Cart';
+import databaseUpdate from './components/databaseUpdate/databaseUpdate'
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import styled from 'styled-components';
 
@@ -19,6 +20,8 @@ function App() {
             <Route path="/card=t">
               <Cart/>
             </Route>
+            <Rout path="/databaseUpdate=t">
+            </Rout>
             <Route path="/">
               <Home />
             </Route>

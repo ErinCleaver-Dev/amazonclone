@@ -1,11 +1,12 @@
 import React from 'react'
 import styled from 'styled-components';
+import { Link } from "react-router-dom";
 
 function Cart() {
     return (
         <div>
         <Body>
-            testing
+            <Link ="/">
         </Body>
         </div>
     )

@@ -4,10 +4,27 @@ import SearchIcon from '@material-ui/icons/Search';
 import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';
 import RoomIcon from '@material-ui/icons/Room';
 import { Link } from "react-router-dom";
+import Select from 'react-select';
 
-function Header() {
- 
-    return (
+class Header extends React.Component {
+    state = {
+        value: {label: this.props.val, value: this.props.val}
+    }
+    
+    options= [
+        {
+            value: "All",
+            lable: "All"
+        }
+
+    ];
+
+    handleChange(value) {
+        this.setState({value: value});
+    }
+
+    render () { 
+        return (
         <Container>
             <HeaderLogo >
                 <Link to="/">
@@ -19,7 +36,12 @@ function Header() {
                 <optionLineTwo><p>Select your address</p></optionLineTwo>
             </HeaderOption>
             <HeaderSearch>
-               
+                <SearchDropDown 
+                    options={this.options}
+                    value={this.state.value}
+                    onChange={value => this.handleChange(value)}
+                    defaultValue={{value: 'All', label: 'All'}}
+                />
                 <HeaderSearchInput type='text' />
                 <HeaderSearchIconContainer> 
                     <SearchIcon />
@@ -43,7 +65,8 @@ function Header() {
                         <CartCount>5</CartCount>
                     </HeaderOptionsCart>
         </Container>
-    )
+        )
+    }
 }
 
 export default Header
@@ -88,7 +111,9 @@ const HeaderSearch = styled.div`
 
 `
 
-const SearchDropDown = styled.input``
+const SearchDropDown = styled(Select)`
+
+`
 
 const HeaderSearchInput = styled.input`
     flex-grow: 1;
@@ -104,6 +129,7 @@ const HeaderSearchInput = styled.input`
     }
   
 `
+
 
 const HeaderSearchIconContainer = styled.div`
     background-color: #febd69;
