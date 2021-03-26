@@ -6,6 +6,7 @@ import RoomIcon from '@material-ui/icons/Room';
 import { Link } from "react-router-dom";
 
 function Header() {
+ 
     return (
         <Container>
             <HeaderLogo >
@@ -18,7 +19,7 @@ function Header() {
                 <optionLineTwo><p>Select your address</p></optionLineTwo>
             </HeaderOption>
             <HeaderSearch>
-
+               
                 <HeaderSearchInput type='text' />
                 <HeaderSearchIconContainer> 
                     <SearchIcon />
@@ -87,14 +88,14 @@ const HeaderSearch = styled.div`
 
 `
 
-const SelectionOptionOne = styled.input``
+const SearchDropDown = styled.input``
 
 const HeaderSearchInput = styled.input`
     flex-grow: 1;
     max-width: 950px;
     min-width: 100px;
     width: 45px;
-    bakground: white;
+    background: white;
     border: 0;
     border-radius: 10px 0px 0px 10px;
     padding: 2px;
@@ -126,7 +127,7 @@ const HeaderOptionsCart = styled.div`
     path {
         align-items: center;
         color: white;
-        text-direction: none;
+        text-decoration: none;
     }
 `
 
