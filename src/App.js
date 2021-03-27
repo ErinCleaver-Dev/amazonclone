@@ -4,12 +4,31 @@ import NavBar from './components/NavBar/NavBar';
 import Footer from './components/Footer/Footer';
 import Home from './components/Main/Home';
 import Cart from './components/Cart/Cart';
-import databaseUpdate from './components/databaseUpdate/databaseUpdate'
+import Database from './components/databaseUpdate/Database'
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import styled from 'styled-components';
-
+import {useState, useEffect} from 'react';
+import {db} from './Firebase/firebase';
+import CartItem from './components/Cart/CartItem';
 
 function App() {
+  const [cartItems, setCartItems] = useState([]);
+
+  const getCartItems = () => {
+    db.collection('cartItems').onSnapshot((snapshot)=>{
+      const tempItems = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        product: doc.data()
+      }))
+
+      setCartItems(tempItems)
+    });
+  }
+
+  useEffect(() => {
+    getCartItems();
+  }, [])
+
   return (
     <div>
       <Router>
@@ -18,12 +37,13 @@ function App() {
           <NavBar />
           <Switch>
             <Route path="/cart">
-              <Cart/>
+              <Cart cartItems={cartItems}/>
             </Route>
-            <Route path="/databaseUpdate">
+            <Route path="/Database">
+              <Database />
             </Route>
             <Route path="/">
-              <Home />
+              <Home cartItems={cartItems}/>
             </Route>
           </Switch>
           <Footer />

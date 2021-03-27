@@ -10,7 +10,7 @@ function Footer() {
             </BackToTop>
             <SiteMap>
             <AmazonMap>
-                <Link to="/databaseUpdate">
+                <Link to="/Database">
                     Update Database
                 </Link>
             </AmazonMap>

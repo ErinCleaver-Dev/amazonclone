@@ -124,7 +124,7 @@ const HeaderSearchInput = styled.input`
     border: 0;
     border-radius: 10px 0px 0px 10px;
     padding: 2px;
-    : focus {
+    :focus {
         outline: none;
     }
   

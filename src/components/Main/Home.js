@@ -4,7 +4,7 @@ import Product from './Product';
 import ipadPhoto from "../../img/ipad-pro-12-select-wifi-spacegray-202003_FMT_WHH.png"
 import {db} from '../../Firebase/firebase';
 
-function Home ()   {
+function Home (props)   {
     const [products, SetProducts] = useState([]);
 
     const getProducts = () => {
@@ -34,7 +34,8 @@ function Home ()   {
                 {
                     products.map((data)=>(
                         <Product 
-                        title={data.product.name} 
+                        id = {data.id}
+                        name={data.product.name} 
                         price= {data.product.price}
                         rating={data.product.rating} 
                         loadImage={data.product.loadImage}/>

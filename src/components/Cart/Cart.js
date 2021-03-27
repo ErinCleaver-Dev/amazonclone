@@ -3,12 +3,11 @@ import styled from 'styled-components';
 import CartItems from './CartItems';
 import CartTotal from './CartTotal';
 
-function Cart() {
+function Cart({cartItems}) {
     return (
         <Container>
-            <CartItems>
-
-            </CartItems>
+            <CartItems cartItems ={cartItems}/>
+            <CartTotal/>
            
         </Container>
     )
@@ -17,7 +16,8 @@ function Cart() {
 export default Cart
 
 const Container = styled.div`
+    display: flex;
     background-image: linear-gradient(to right, #EAEDED , #A4D6D6);
-    display: grid;
     height: 1000px;
+    padding: 14px 18px 0 18px;
 `
