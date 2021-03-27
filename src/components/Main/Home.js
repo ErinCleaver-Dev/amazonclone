@@ -1,19 +1,49 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import styled from 'styled-components';
 import Product from './Product';
 import ipadPhoto from "../../img/ipad-pro-12-select-wifi-spacegray-202003_FMT_WHH.png"
+import {db} from '../../Firebase/firebase';
 
 function Home ()   {
+    const [products, SetProducts] = useState([]);
+
+    const getProducts = () => {
+        db.collection('products').onSnapshot((snapshot)=>{
+            let tempProducts = [];
+
+            tempProducts = snapshot.docs.map((doc)=> ({
+                id: doc.id,
+                product: doc.data()
+            }));
+
+            SetProducts(tempProducts);
+        });
+    }
+
+    useEffect(() => {
+        getProducts();
+    }, [])
+
+    console.log();
     return (
         <Body>
             <Banner>
                 
             </Banner>
             <Content>
-                <Product title="ipad-pro-12-select-wifi-spacegray-202003_FMT_WHH" price="$1449" loadImage="https://i.imgur.com/gPvBX0L.png"/>
-                <Product title="Microsoft Surface Laptop 3" price="$798.98" loadImage="https://i.imgur.com/0iTIAkq.jpg"/>
-                <Product title="Nature Made Elderberry Gummies with 
-                Vitamin C & Zinc, 60 Count To Help Support The Immune System" price="$13.99" loadImage="https://i.imgur.com/H6ddlq0.jpg"/>
+                {
+                    products.map((data)=>(
+                        <Product 
+                        title={data.product.name} 
+                        price= {data.product.price}
+                        rating={data.product.rating} 
+                        loadImage={data.product.loadImage}/>
+
+                    ))
+
+                }
+
+              
 
 
             </Content>

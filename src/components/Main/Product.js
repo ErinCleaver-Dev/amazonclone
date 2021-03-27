@@ -1,21 +1,25 @@
 import React from 'react'
 import styled from 'styled-components';
 
-function Product(props) {
+function Product({title, price, rating, loadImage, altText, id}) {
        
     return (
         <Container>
             <Title>
-                {props.title}
+                {title}
             </Title>
             <Price>
-                {props.price}
+                ${price}
             </Price>
             <Rating>
-                ⭐⭐⭐⭐⭐
+                {
+                    Array(rating)
+                    .fill()
+                    .map(rating=> <div>&#11088;</div>)
+                }
             </Rating>
             <Image>
-            <img src={props.loadImage} alt={props.altText}></img>
+            <img src={loadImage} alt={altText}></img>
             </Image>
             <ActivtionSection>
                 <AddToCartButton>
@@ -52,6 +56,7 @@ const Price = styled.span`
 `
 
 const Rating = styled.span`
+    display: flex;
 `
 const Image = styled.span`
     display: grid;

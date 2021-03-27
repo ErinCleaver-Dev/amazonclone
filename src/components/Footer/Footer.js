@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components';
+import { Link } from "react-router-dom";
 
 function Footer() {
     return (
@@ -9,6 +10,9 @@ function Footer() {
             </BackToTop>
             <SiteMap>
             <AmazonMap>
+                <Link to="/databaseUpdate">
+                    Update Database
+                </Link>
             </AmazonMap>
             <AmazonOwnedProducts>
             </AmazonOwnedProducts>
@@ -44,10 +48,10 @@ const SiteMap = styled.div`
 `
 
 const AmazonMap = styled.div`
+    display: flex;
     height: 400px;
     width: 100%;
     background-color: #232F3E;    
-    align-items: center;
     justify-content: center;
     color: white;
 `
