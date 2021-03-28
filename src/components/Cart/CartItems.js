@@ -28,7 +28,7 @@ function CartItems({cartItems}) {
 export default CartItems
 
 const Container = styled.div`
-    flex: 0.8;
+    flex: 0.75;
     padding: 20px;
 `
 const Title = styled.div`

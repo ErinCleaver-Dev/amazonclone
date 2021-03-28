@@ -7,6 +7,20 @@ import { Link } from "react-router-dom";
 import Select from 'react-select';
 
 class Header extends React.Component {
+    constructor({cartItems, user, signOut}) {
+        super({cartItems, user, signOut});
+        
+    }
+    getCount = () => {
+        let count = 0;
+        this.props.cartItems.forEach((item) => {
+            // add the quanity of the cart item to total
+            count += item.product.quantity;
+        });
+
+        return count;
+    }
+    
     state = {
         value: {label: this.props.val, value: this.props.val}
     }
@@ -48,13 +62,13 @@ class Header extends React.Component {
                 </HeaderSearchIconContainer>
             </HeaderSearch>
             <HeaderNavItems>
+                <HeaderOptionSignout onClick={this.props.signOut}>
+                    <OptionLineOne><p>Hello, {this.props.user.name}</p></OptionLineOne>
+                    <OptionLineTwo><p>Accounts & Lists</p></OptionLineTwo>
+                </HeaderOptionSignout>
                 <HeaderOption>
-                    <optionLineOne><p>Hello, Erin</p></optionLineOne>
-                    <optionLineTwo><p>Accounts & Lists</p></optionLineTwo>
-                </HeaderOption>
-                <HeaderOption>
-                    <optionLineOne><p>Returns</p></optionLineOne>
-                    <optionLineTwo><p>& Orders</p></optionLineTwo>
+                    <OptionLineOne><p>Returns</p></OptionLineOne>
+                    <OptionLineTwo><p>& Orders</p></OptionLineTwo>
                 </HeaderOption>
             </HeaderNavItems>
                 
@@ -62,7 +76,7 @@ class Header extends React.Component {
                     <Link to="/cart">
                         <ShoppingBasketIcon />
                     </Link>
-                        <CartCount>5</CartCount>
+                        <CartCount>{this.getCount()}</CartCount>
                     </HeaderOptionsCart>
         </Container>
         )
@@ -88,15 +102,20 @@ const HeaderLogo = styled.div`
     }
 `
 
+const HeaderOptionSignout = styled.div`
+    padding: 10px 9px;
+    cursor: pointer;
+`
+
 const HeaderOption = styled.div`
     padding: 10px 9px;
 `
 
-const optionLineOne = styled.div`
+const OptionLineOne = styled.div`
 
 `
 
-const optionLineTwo = styled.div`
+const OptionLineTwo = styled.div`
     font-weight: 700;
 `
 

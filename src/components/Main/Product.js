@@ -64,7 +64,6 @@ const Container = styled.div`
     flex: 1;
     margin: 20px;
     max-height: 400px;
-    max-width: 400px;
     border-radius: 25px;
     display: flex;
     flex-direction: column;

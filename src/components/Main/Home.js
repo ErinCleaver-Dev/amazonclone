@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import styled from 'styled-components';
 import Product from './Product';
-import ipadPhoto from "../../img/ipad-pro-12-select-wifi-spacegray-202003_FMT_WHH.png"
 import {db} from '../../Firebase/firebase';
 
 function Home (props)   {
@@ -39,7 +38,6 @@ function Home (props)   {
                         price= {data.product.price}
                         rating={data.product.rating} 
                         loadImage={data.product.loadImage}/>
-
                     ))
 
                 }
@@ -72,9 +70,14 @@ const Banner = styled.div`
 
 const Content = styled.div`
     display: grid;
+    
+
     grid-template-columns: repeat(3, 1fr);
     margin-top: -350px;
     background: white;
     padding-left: 10px;
     padding-right: 10px;
+`
+
+const threeImages = styled.div`
 `
