@@ -11,10 +11,14 @@ class Database extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            title: "tile",
+            title: "title",
             loadImage: "url",
             price: 0,
             rating: 0,
+            model: "model",
+            brand: "brand",
+            type: "type of thing",
+            modelNuber: "modelNumber",
         };
     }   
 
